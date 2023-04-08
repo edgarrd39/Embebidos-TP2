@@ -31,6 +31,8 @@ SPDX-License-Identifier: MIT
 
 /* === Headers files inclusions ================================================================ */
 
+#include <stdint.h>
+
 /* === Cabecera C++ ============================================================================ */
 
 #ifdef __cplusplus
@@ -39,11 +41,21 @@ extern "C" {
 
 /* === Public macros definitions =============================================================== */
 
+#define FIELD_SIZE 50
+
 /* === Public data type declarations =========================================================== */
+
+typedef struct alumno_s {
+    char apellido[FIELD_SIZE];
+    char nombre[FIELD_SIZE];
+    uint32_t documento;
+} * alumno_t;
 
 /* === Public variable declarations ============================================================ */
 
 /* === Public function declarations ============================================================ */
+
+int Serializar(const struct alumno_s * alumno, char cadena[], int espacio);
 
 /* === End of documentation ==================================================================== */
 

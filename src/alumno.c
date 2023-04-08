@@ -27,6 +27,7 @@ SPDX-License-Identifier: MIT
 
 /* === Headers files inclusions =============================================================== */
 
+#include <stdio.h>
 #include "alumno.h"
 
 /* === Macros definitions ====================================================================== */
@@ -37,13 +38,52 @@ SPDX-License-Identifier: MIT
 
 /* === Private function declarations =========================================================== */
 
+static int SerializarCadena(const char * campo, const char * valor, char * cadena, int espacio);
+
+static int SerializarNumero(const char * campo, int valor, char * cadena, int espacio);
 /* === Public variable definitions ============================================================= */
 
 /* === Private variable definitions ============================================================ */
 
 /* === Private function implementation ========================================================= */
 
+static int SerializarCadena(const char * campo, const char * valor, char * cadena, int espacio) {
+    return snprintf(cadena, espacio, "\"%s\":\"%s\",", campo, valor);
+}
+
+static int SerializarNumero(const char * campo, int valor, char * cadena, int espacio) {
+    return snprintf(cadena, espacio, "\"%s\":\"%d\",", campo, valor);
+}
 /* === Public function implementation ========================================================== */
+
+int Serializar(const struct alumno_s * alumno, char cadena[], int espacio) {
+    int disponibles = espacio;
+    int resultado;
+
+    cadena[0] = '{';
+    disponibles--;
+    cadena++;
+
+    resultado = SerializarCadena("apellido", alumno->apellido, cadena, espacio);
+
+    if (resultado > 0) {
+        disponibles -= resultado;
+        cadena += resultado;
+        resultado = SerializarCadena("nombre", alumno->nombre, cadena, espacio);
+    }
+    if (resultado > 0) {
+        disponibles -= resultado;
+        cadena += resultado;
+        resultado = SerializarNumero("documento", alumno->documento, cadena, espacio);
+    }
+    if (resultado > 0) {
+        cadena += resultado;
+        *(cadena - 1) = '}';
+        resultado = espacio - disponibles;
+    }
+
+    return resultado;
+}
 
 /* === End of documentation ==================================================================== */
 
