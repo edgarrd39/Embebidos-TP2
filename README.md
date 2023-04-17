@@ -2,16 +2,24 @@
 
 Autor: Díaz, Edgardo Rodrigo
 
-Compilación de proyectos en Lenguaje C
+Trabajo Práctico Nº2: Compilación de proyectos en Lenguaje C
 
-El programa principal se encarga de mostrar los datos del alumno por pantalla en formato JSON
+**Descripción**: El programa principal se encarga de mostrar los datos del alumno por pantalla en formato **JSON**
 
 ## Compilación
 
 Para compilar se utiliza en linea de comando la sentencia `make all`
 
+## Ejecución
+
+Para ejecutar el codigo se deebe escribir en linea de comandos la siguiente sentencia:
+`./build/bin/app.elf `
+
 ## Documentación
 
 Para generar la documentación del proyecto se utiliza `make doc`
 
+Para abrir la documentación escribir en linea de comando `open ./build/doc/html/index.html`
 - - - -
+
+Con `make clean` se elimina la carpeta build

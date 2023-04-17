@@ -21,10 +21,10 @@ SPDX-License-Identifier: MIT
 
 /** \brief Segundo Trabajo Practico
  **
- ** Full file description
  **
  ** \addtogroup tp2 TPN2
- ** \brief Segundo Practico
+ ** \brief El programa principal se encarga de mostrar los datos del alumno por pantalla en formato
+ * JSON
  ** @{ */
 
 /* === Headers files inclusions =============================================================== */
